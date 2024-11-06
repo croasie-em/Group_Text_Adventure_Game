@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Adventure Game</title>
+</head>
+<body>
+    <h1>Text Adventure Game</h1>
+    {{ intro|safe }}
+    {{ location_desc|safe }}
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <form method="POST" action="{{ url_for('action') }}">
+        <label for="action">What do you want to do?</label>
+        <input type="text" name="action" id="action" required>
+        <button type="submit">Submit</button>
+    </form>
+    <form method="POST" action="{{ url_for('action') }}">
+        <label for="item">If taking an item, specify:</label>
+        <input type="text" name="item" id="item">
+        <button type="submit" name="action" value="take">Take Item</button>
+    </form>
+    <h2>Inventory</h2>
+    {{ inventory_desc|safe }}
+</body>
+</html>
+8:22
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Adventure Game</title>
+</head>
+<body>
+    <h1>Text Adventure Game</h1>
+    {{ intro|safe }}
+    {{ location_desc|safe }}
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <form method="POST" action="{{ url_for('action') }}">
+        <label for="action">What do you want to do?</label>
+        <input type="text" name="action" id="action" required>
+        <button type="submit">Submit</button>
+    </form>
+    <form method="POST" action="{{ url_for('action') }}">
+        <label for="item">If taking an item, specify:</label>
+        <input type="text" name="item" id="item">
+        <button type="submit" name="action" value="take">Take Item</button>
+    </form>
+    <h2>Inventory</h2>
+    {{ inventory_desc|safe }}
+</body>
+</html>
