@@ -25,7 +25,8 @@ locations = {
     }
 current_location = 'entrance'
 inventory = []
-#Game functions
+
+# Game functions
 def show_intro():
     return '''<p>Welcome to the Adventure of the Hidden Treasure!</p>
               <p>You are an intrepid explorer seeking a legendary treasure hidden deep within an ancient temple.</p>
