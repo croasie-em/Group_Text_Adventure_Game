@@ -1,0 +1,12 @@
+/* Hide the game content initially */
+#game-content {
+    display: none;
+}
+
+/* Center the start button */
+.start-button {
+    text-align: center;
+    margin: 20px;
+}
+
+/* Other styling as needed */

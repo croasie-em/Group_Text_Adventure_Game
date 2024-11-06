@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='adventure.css') }}">
+    <title>Adventure Game</title>
+</head>
+<body>
+    <h1>Welcome to the Adventure of the Hidden Treasure!</h1>
+    <p>You are an intrepid explorer seeking a legendary treasure hidden deep within an ancient temple.</p>
+    <p>Your journey will be fraught with peril, but the rewards are immeasurable. Good luck!</p>
+    
+    <p id="message"></p>
+    <div id="game-output"></div>
+    
+    <!-- Start Game Button -->
+    <div class="start-button">
+        <button onclick="startGame()">Start Game</button>
+    </div>
+
+    <!-- Game Content - Initially Hidden -->
+    <div id="game-content" style="display: none;">
+        <div class="button-directions-quit-group">
+            <button onClick="goDirection('north')">Go North</button>
+            <button onClick="goDirection('south')">Go South</button>
+            <button onClick="goDirection('east')">Go East</button>
+            <button onClick="goDirection('west')">Go West</button>
+            <button onClick="quitGame()">Quit</button>
+        </div>
+
+        <div class="inventory">
+            <button onClick="showInventory()">Show Inventory</button>
+        </div>
+
+        <!-- Action Form -->
+        <form action="{{ url_for('process_action') }}" method="POST">
+            <label for="action">What do you want to do?</label>
+            <input type="text" name="action" id="action" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Take Item Form -->
+        <form method="POST" action="{{ url_for('process_action') }}">
+            <label for="item">If taking an item, specify:</label>
+            <input type="text" name="item" id="item">
+            <button type="submit" name="action" value="take">Take Item</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
