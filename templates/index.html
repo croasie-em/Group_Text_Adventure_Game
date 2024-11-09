@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mysterious Forest Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Mysterious Forest</h1>
+
+    <!-- Start Button -->
+    <div id="start-button">
+        <button onclick="startGame()">Start Game</button>
+    </div>
+
+    <!-- Game log where the intro text and location description will be displayed -->
+    <div id="game-log" style="white-space: pre-line;"></div>
+
+    <!-- Game controls: hidden until game starts -->
+    <div id="game-controls" style="display:none;">
+        <button onclick="move('north')">Go North</button>
+        <button onclick="move('south')">Go South</button>
+        <button onclick="move('east')">Go East</button>
+        <button onclick="move('west')">Go West</button>
+        <button onclick="takeItem()">Take Item</button>
+        <button onclick="checkInventory()">Check Inventory</button>
+        <button onclick="quitGame()">Quit</button>
+    </div>
+
+    <div id="inventory"></div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

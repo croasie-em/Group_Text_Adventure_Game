@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#start-screen {
+    text-align: center;
+}
+
+#game-log {
+    white-space: pre-line;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    min-height: 200px;
+    background-color: #f9f9f9;
+}
+
+#game-controls button {
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
