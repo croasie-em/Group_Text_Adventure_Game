@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='adventure.css') }}">
-    <title>Adventure Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Mysterious Forest</title>
 </head>
 <body>
-    <h1>Welcome to the Adventure of the Hidden Treasure!</h1>
-    <p>You are an intrepid explorer seeking a legendary treasure hidden deep within an ancient temple.</p>
-    <p>Your journey will be fraught with peril, but the rewards are immeasurable. Good luck!</p>
-    
-    <p id="message"></p>
+    <h1>Welcome to the Mysterious Forest!</h1>
+    <p>You wake up on cold, damp ground, the earthy scent thick around you.</p>
+    <p>Rising slowly, you find yourself trapped within towering hedges, their twisted branches woven tightly, creating walls too high to climb.</p>
+    <p>Panic settles in as you search for any memory of how you got here—nothing.</p>
+    <p>Your pockets are empty, and an eerie silence presses down, broken only by a faint, haunting melody echoing from somewhere deeper in the maze.</p>
+
     <div id="game-output"></div>
     
     <!-- Start Game Button -->
@@ -28,22 +29,18 @@
         </div>
 
         <div class="inventory">
-            <button onClick="showInventory()">Show Inventory</button>
+            <button onclick="showInventory()">Show Inventory</button>
         </div>
 
-        <!-- Action Form -->
-        <form action="{{ url_for('process_action') }}" method="POST">
-            <label for="action">What do you want to do?</label>
-            <input type="text" name="action" id="action" required>
-            <button type="submit">Submit</button>
-        </form>
+        <!-- Add this div to display the inventory items -->
+        <div id="inventory"></div>
 
-        <!-- Take Item Form -->
-        <form method="POST" action="{{ url_for('process_action') }}">
+        <!-- Take Item Button -->
+        <div id="take-item">
             <label for="item">If taking an item, specify:</label>
-            <input type="text" name="item" id="item">
-            <button type="submit" name="action" value="take">Take Item</button>
-        </form>
+            <input type="text" id="item" placeholder="e.g., Candlestick">
+            <button onclick="takeItem()">Take Item</button>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
