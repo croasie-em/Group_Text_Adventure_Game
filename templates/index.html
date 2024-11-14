@@ -5,15 +5,19 @@
     <title>Mysterious Forest</title>
 </head>
 <body>
-    <h1>Welcome to the Mysterious Forest!</h1>
-    <p>You wake up on cold, damp ground, the earthy scent thick around you.</p>
-    <p>Rising slowly, you find yourself trapped within towering hedges, their twisted branches woven tightly, creating walls too high to climb.</p>
-    <p>Panic settles in as you search for any memory of how you got here—nothing.</p>
-    <p>Your pockets are empty, and an eerie silence presses down, broken only by a faint, haunting melody echoing from somewhere deeper in the maze.</p>
+    <section>
+        <h1 class="heading-1">Welcome to the Mysterious Forest!</h1>  
+    </section>
+    
 
-    <!-- Add the missing "message" element -->
-    <div id="message"></div>
-
+    <div class="container">
+        <span class="text">You wake up on cold, damp ground, the earthy scent thick around you.</span>
+        <span class="text">Slowly, you find yourself trapped within towering hedges, their twisted branches woven tightly, creating walls too high to climb.</span>
+        <span class="text">Panic settles in as you search for any memory of how you got here—nothing.</span>
+        <span class="text">Your pockets are empty, and an eerie silence presses down, broken only by a faint, haunting melody echoing from somewhere deeper in the maze.</span>
+    </div>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
     <div id="game-output"></div>
     
     <!-- Start Game Button -->
