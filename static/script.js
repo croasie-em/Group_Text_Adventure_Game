@@ -94,4 +94,3 @@ function quitGame() {
         document.getElementById("message").innerHTML = "An error occurred while quitting the game. Please try again.";
     });
 }
-
