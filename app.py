@@ -50,7 +50,7 @@ inventory = []
 
 # Game functions
 def show_intro():
-    return "Choose your option."
+    return
 
 def show_current_location():
     loc = locations[current_location]
@@ -65,9 +65,15 @@ def move_player(direction):
     new_location = locations[current_location]['directions'].get(direction)
     if new_location:
         current_location = new_location
+
+        # Check if the player reaches the forest edge after collecting all items
+        if current_location == 'forest edge' and check_victory():
+            return "Congratulations! You have successfully navigated to the forest edge and completed your adventure! 🎉"
+
         return show_current_location()
     else:
         return "You cannot go that way."
+
 
 def take_item(item):
     loc = locations[current_location]
@@ -77,21 +83,26 @@ def take_item(item):
     items_in_location = {i.lower(): i for i in loc['items']}  # Create a dictionary to map lowercase to original
 
     if item in items_in_location:
-        # Use the original item name (case sensitive) to add it to the inventory
         original_item = items_in_location[item]
         inventory.append(original_item)
         loc['items'].remove(original_item)
-        return f"You have taken the {original_item}."
+        
+        # Check for victory condition after taking an item
+        if check_victory():
+            return f"You have taken the {original_item}. You have collected all the items! Now, head to the forest edge to complete your journey."
+        else:
+            return f"You have taken the {original_item}."
     else:
         return "No such item here."
-
-
 
 def show_inventory():
     if inventory:
         return "<p>Your inventory:</p><ul>" + "".join(f"<li>{item}</li>" for item in inventory) + "</ul>"
     else:
         return "Your inventory is empty."
+
+def check_victory():
+    return set(inventory) == set(required_items)
 
 # Routes
 @app.route('/')
@@ -114,9 +125,14 @@ def process_action():
     global current_location
     action = request.json.get('action', '').lower()
     
+    message = ""  # Default empty message
     if action.startswith("go"):
         direction = action.split()[-1]
-        message = move_player(direction)
+        response = move_player(direction)
+        
+        # Set message only if there is a specific reason (like a failure)
+        if response == "You cannot go that way.":
+            message = response
     elif action.startswith("take"):
         item = action.split(" ", 1)[1]
         message = take_item(item)
@@ -125,15 +141,23 @@ def process_action():
     else:
         message = "Invalid action."
 
-    # Ensure only one location description is appended
     return jsonify({
-        'location_desc': show_current_location(),
+        'location_desc': show_current_location(),  # Always show the current location
         'inventory_desc': show_inventory(),
-        'message': message
+        'message': message  # Empty if no special feedback
     })
 
 
-
+@app.route('/quit_game', methods=['POST'])
+def quit_game():
+    global current_location, inventory
+    current_location = 'endless grove'  # Reset to initial location or any default
+    inventory.clear()  # Clear the inventory
+    return jsonify({
+        'message': "You have quit the game. Thank you for playing!",
+        'location_desc': '',
+        'inventory_desc': ''
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
