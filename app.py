@@ -159,5 +159,6 @@ def quit_game():
         'inventory_desc': ''
     })
 
+
 if __name__ == '__main__':
     app.run(debug=True)

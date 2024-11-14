@@ -69,3 +69,29 @@ function takeItem() {
         document.getElementById("inventory").innerHTML = data.inventory_desc;
     });
 }
+
+// Function to quit the game
+function quitGame() {
+    // Send a request to the backend to handle quitting the game
+    fetch('/quit_game', {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Update the game output to show the quit message
+        if (data.message) {
+            document.getElementById("message").innerHTML = data.message;
+        }
+        document.getElementById("game-output").innerHTML = ""; // Clear game output
+        document.getElementById("inventory").innerHTML = ""; // Clear inventory
+
+        // Optionally, hide game content to show that the game has ended
+        document.getElementById('game-content').style.display = 'none';
+        document.querySelector('.start-button').style.display = 'block'; // Show start button again for restarting
+    })
+    .catch(error => {
+        console.error("Error quitting game:", error);
+        document.getElementById("message").innerHTML = "An error occurred while quitting the game. Please try again.";
+    });
+}
+
