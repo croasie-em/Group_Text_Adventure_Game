@@ -1,4 +1,30 @@
 // Function to initialize the game and display the starting information
+function typewriter(elementId, speed = 50) {
+    const element = document.getElementById(elementId);
+    if (!element) {
+        console.error(`Element with ID "${elementId}" not found.`);
+        return;
+    }
+
+    // Extract the text content from the element and clear it for the effect
+    const text = element.innerText || element.textContent;
+    element.innerHTML = ''; // Clear existing content
+
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed); // Call the type function recursively
+        }
+    }
+    type(); // Start the typing effect
+}
+
+document.addEventListener('DOMContentLoaded', () => { // Start the effect upon the DOM fully loading
+    typewriter('intro-text', 20);
+});
+
 function startGame() {
     document.querySelector('.start-button').style.display = 'none';
     document.getElementById('game-content').style.display = 'block';
