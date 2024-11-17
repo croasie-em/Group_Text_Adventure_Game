@@ -1,71 +1,17 @@
-/* Animation on heading */
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-500px);
-    }
-    to {
-        transform: translateX(0); /* Use units and correct final value */
-    }
-}
-
-.heading-1 {
-    align-items: center;
-    width: 800px;
-    margin-left: 400px;
-    animation: slideInLeft 1s ease-in both;
-    color: white;
-    padding: 20px;
-    text-align: center; /* Align the text to center properly */
-}
-
-/* Hover effect on the start button */
-.start-button:hover {
-    transform: translateY(-10px);
-}
-
-/* Create transition on the game buttons */
-.button-directions-quit-group {
-    text-align: center;
-    margin: 5px;
-    font-size: 2rem;
-    font-weight: 700;
-    padding: 0.5em 1em;
-    color: var(--clr-rgba);
-    background-color: var(--clr-accent);
-    border-radius: 5px;
-    transition: transform 0.3s;
-}
-
-.button-directions-quit-group:hover {
-    transform: translateY(-10px);
-}
-
-/* Create transition on the inventory buttons */
-.inventory {
-    text-align: center;
-    margin: 5px;
-    font-size: 2rem;
-    font-weight: 700;
-    padding: 0.5em 1em;
-    color: white;
-    border-radius: 5px;
-    transition: transform 0.3s;
-}
-
-.inventory:hover {
-    transform: translateY(-10px);
-}
-
+/* General body styling */
 body {
-    width: 100vw;
-    height: 100vh;
-    background-image: url(https://i0.wp.com/blog.tripfez.com/wp-content/uploads/2020/01/Mysterious-and-Gorgeous-Forests-in-Europe-3-%E2%80%93White-Carpathians.png?w=655&ssl=1);
-    background-size: cover;
-    font-family: 'Uncial Antiqua', cursive;
-    color: #f4f4f4;
-    position: relative; /* Ensure the pseudo-element is positioned correctly */
+    width: 100%;
+    height: 100%;
+    background-image: url(https://i0.wp.com/blog.tripfez.com/wp-content/uploads/2020/01/Mysterious-and-Gorgeous-Forests-in-Europe-3-%E2%80%93White-Carpathians.png?w=655&ssl=1); /* Background image of a forest */
+    background-size: cover; /* Cover the entire viewport */
+    font-family: 'Uncial Antiqua', cursive; /* Game's unique font for a fantasy-like feel */
+    color: #f4f4f4; /* Light color for contrast against dark background */
+    position: relative;
+    padding: 10px; /* Reduced padding for better fit */
+    box-sizing: border-box; /* Ensures padding is included in width/height */
 }
 
+/* Dark overlay for the background to improve readability of text on the page */
 body::before {
     content: "";
     position: absolute;
@@ -73,6 +19,185 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1; /* Ensure it is behind the content */
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+    z-index: -1; /* Places overlay behind other elements */
+}
+
+/* Animation for the game heading */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-500px); /* Start sliding from far left */
+    }
+    to {
+        transform: translateX(0); /* End at original position */
+    }
+}
+
+/* Main heading styling with a slide-in animation */
+.heading-1 {
+    max-width: 90%;
+    margin: 10px auto; /* Reduced margin for better layout */
+    animation: slideInLeft 1s ease-in both; /* Heading slides in smoothly */
+    color: white;
+    padding: 10px; /* Reduced padding for better fit */
+    text-align: center;
+    font-size: calc(2rem + 0.8vw); /* Responsive font size */
+}
+
+/* Styling for the introductory text container */
+#intro-text {
+    max-width: 90%;
+    background: rgba(255, 255, 255, 0.1); /* Slight white background for text contrast */
+    padding: 10px; /* Reduced padding */
+    border-radius: 10px; /* Rounded corners */
+    margin: 0 auto 15px auto; /* Center the box and add margin */
+    color: #f0f0f0; /* Soft white text color */
+    font-size: 1.2rem; /* Text font size */
+}
+
+/* Styling for the message box to display feedback or status */
+.message-box {
+    max-width: 90%;
+    margin: 0 auto; /* Center align */
+    padding: 10px; /* Reduced padding */
+    border-radius: 10px; /* Rounded corners */
+    margin: 10px auto; /* Reduced margin */
+    font-size: 1.2rem; /* Text font size */
+    color: #f4f4f4; /* Light color for visibility */
+    text-align: center; /* Align text to center */
+}
+
+/* Styling for displaying the current game location and descriptions */
+.game-output-box {
+    max-width: 90%;
+    margin: 0 auto; /* Center align */
+    padding: 10px; /* Reduced padding */
+    border-radius: 10px; /* Rounded corners */
+    margin: 10px auto; /* Reduced margin */
+    font-size: 1.2rem; /* Text font size */
+    color: #f4f4f4; /* Light color for visibility */
+}
+
+/* Styling for the inventory box which shows player's collected items */
+.inventory-box {
+    max-width: 90%;
+    margin: 0 auto; /* Center align */
+    padding: 10px; /* Reduced padding */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    margin: 0 auto 10px auto; /* Reduced margin */
+    font-size: 1.2rem; /* Text font size */
+    color: #f4f4f4; /* Light color for visibility */
+}
+
+/* Styling for the start button */
+.start-button {
+    text-align: center;
+    margin: 10px auto; /* Reduced margin */
+    display: block; /* Center horizontally */
+    font-size: 14px; /* Reduced font size */
+    font-weight: 700; /* Bold text */
+    padding: 8px 35px; /* Reduced padding */
+    color: white; /* Button text color */
+    border: 1px solid transparent; /* Remove border */
+    border-radius: 8px; /* Rounded button corners */
+    transition: transform 0.3s; /* Smooth transform on hover */
+}
+
+/* Styling for the start button on hover */
+.start-button:hover {
+    transform: translateY(-5px); /* Button moves up slightly */
+}
+
+/* Styling for the direction and quit game buttons */
+.button-directions-quit-group {
+    text-align: center;
+    margin: 10px auto; /* Reduced margin */
+    max-width: 90%; /* Constrain max-width */
+    font-size: 1.2rem; /* Reduced font size */
+    font-weight: 700; /* Bold text */
+    padding: 0.3em 0.5em; /* Reduced padding */
+    color: #f4f4f4; /* Button text color */
+    border-radius: 5px; /* Rounded corners */
+    transition: transform 0.3s; /* Smooth transform on hover */
+}
+
+/* Styling for the individual directional and quit buttons */
+.button-directions-quit-group button {
+    margin: 3px; /* Reduced margin */
+    padding: 8px 15px; /* Reduced padding */
+    background-color: #444; /* Dark grey button background */
+    color: #f4f4f4; /* Light text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded button corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Styling for directional and quit buttons on hover */
+.button-directions-quit-group button:hover {
+    transform: translateY(-5px); /* Button moves up slightly */
+    background-color: #888; /* Light grey background on hover */
+}
+
+/* Styling for the inventory button */
+.inventory {
+    text-align: center;
+    margin: 5px auto; /* Reduced margin */
+    font-size: 1.2rem; /* Reduced font size */
+    font-weight: 700; /* Bold text */
+    padding: 0.3em 0.5em; /* Reduced padding */
+    color: white; /* Button text color */
+    border-radius: 5px; /* Rounded corners */
+    transition: transform 0.3s; /* Smooth transform on hover */
+}
+
+/* Styling for the inventory show/hide button */
+.inventory button {
+    margin: 3px; /* Reduced margin */
+    padding: 8px 15px; /* Reduced padding */
+    background-color: #444; /* Dark grey button background */
+    color: #f4f4f4; /* Light text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded button corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.3s; /* Smooth transform on hover */
+}
+
+/* Styling for the inventory button on hover */
+.inventory button:hover {
+    transform: translateY(-5px); /* Button moves up slightly */
+    background-color: #888; /* Light grey background on hover */
+}
+
+/* Styling for the item input and take button */
+#take-item {
+    text-align: center; /* Center alignment for item input */
+    margin-top: 15px; /* Reduced margin */
+}
+
+/* Styling for the item input text box */
+#take-item input[type="text"] {
+    padding: 8px; /* Reduced padding */
+    font-size: 1rem; /* Font size for input */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Styling for the item take button */
+#take-item button {
+    padding: 8px 15px; /* Reduced padding */
+    font-size: 0.9rem; /* Reduced font size */
+    margin-left: 8px; /* Reduced margin */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #777; /* Grey background color */
+    color: #f4f4f4; /* Light text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.3s; /* Smooth transform on hover */
+}
+
+/* Styling for the item take button on hover */
+#take-item button:hover {
+    background-color: #999; /* Lighter grey on hover */
+    transform: translateY(-5px); /* Button moves up slightly */
 }
