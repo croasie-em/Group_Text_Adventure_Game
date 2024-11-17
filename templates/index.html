@@ -5,47 +5,58 @@
     <title>Mysterious Forest</title>
 </head>
 <body>
-    <h1>Welcome to the Mysterious Forest!</h1>
-    <p>You wake up on cold, damp ground, the earthy scent thick around you.</p>
-    <p>Rising slowly, you find yourself trapped within towering hedges, their twisted branches woven tightly, creating walls too high to climb.</p>
-    <p>Panic settles in as you search for any memory of how you got here—nothing.</p>
-    <p>Your pockets are empty, and an eerie silence presses down, broken only by a faint, haunting melody echoing from somewhere deeper in the maze.</p>
+    <!-- Main title of the game, sliding in from the left -->
+    <section>
+        <h1 class="heading-1">Welcome to the Mysterious Forest!</h1>  
+    </section>
 
-    <!-- Add the missing "message" element -->
-    <div id="message"></div>
+    <!-- Introduction text describing the scenario at the beginning of the game -->
+    <div class="container" id="intro-text">
+        <span class="text">You wake up on cold, damp ground, the earthy scent thick around you.</span>
+        <span class="text">Slowly, you find yourself trapped within towering hedges, their twisted branches woven tightly, creating walls too high to climb.</span>
+        <span class="text">Panic settles in as you search for any memory of how you got here—nothing.</span>
+        <span class="text">Your pockets are empty, and an eerie silence presses down, broken only by a faint, haunting melody echoing from somewhere deeper in the maze.</span>
+    </div>
 
-    <div id="game-output"></div>
-    
-    <!-- Start Game Button -->
+    <!-- Message box to display feedback and status updates to the player -->
+    <div id="message" class="message-box"></div>
+
+    <!-- Box for displaying current game location details -->
+    <div id="game-output" class="game-output-box"></div>
+
+    <!-- Button to start the game initially -->
     <div class="start-button">
         <button onclick="startGame()">Start Game</button>
     </div>
 
-    <!-- Game Content - Initially Hidden -->
+    <!-- Main game controls; initially hidden until the player starts the game -->
     <div id="game-content" style="display: none;">
+        <!-- Directional and quit buttons for player navigation -->
         <div class="button-directions-quit-group">
-            <button onClick="goDirection('north')">Go North</button>
-            <button onClick="goDirection('south')">Go South</button>
-            <button onClick="goDirection('east')">Go East</button>
-            <button onClick="goDirection('west')">Go West</button>
-            <button onClick="quitGame()">Quit</button>
+            <button onclick="goDirection('north')">Go North</button>
+            <button onclick="goDirection('south')">Go South</button>
+            <button onclick="goDirection('east')">Go East</button>
+            <button onclick="goDirection('west')">Go West</button>
+            <button onclick="quitGame()">Quit</button>
         </div>
 
+        <!-- Button to show or hide inventory items -->
         <div class="inventory">
-            <button onclick="showInventory()">Show Inventory</button>
+            <button onclick="showInventory()">Show/Hide Inventory</button>
         </div>
 
-        <!-- Add this div to display the inventory items -->
-        <div id="inventory"></div>
-
-        <!-- Take Item Button -->
+        <!-- Input box and button to take items from the current location -->
         <div id="take-item">
             <label for="item">If taking an item, specify:</label>
             <input type="text" id="item" placeholder="e.g., Candlestick">
             <button onclick="takeItem()">Take Item</button>
         </div>
+
+        <!-- Box for displaying inventory details; initially hidden until inventory is shown -->
+        <div id="inventory-box" class="inventory-box" style="display: none;"></div>
     </div>
 
+    <!-- Link to the external JavaScript file for game functionality -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
