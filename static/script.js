@@ -76,7 +76,9 @@ function goDirection(direction) {
 
 // Function to take an item specified by the player
 function takeItem() {
-    const item = document.getElementById("item").value.trim();
+    const itemInput = document.getElementById("item");
+    const item = itemInput.value.trim();
+
     if (item === "") {
         document.getElementById("message").innerHTML = "Please specify an item to take.";
         return;
@@ -94,8 +96,12 @@ function takeItem() {
         if (data.message) {
             document.getElementById("message").innerHTML = data.message;
         }
+
+        // Clear the input field
+        itemInput.value = "";
     });
 }
+
 
 // Function to show or hide the inventory
 function showInventory() {
